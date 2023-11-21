@@ -58,7 +58,7 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler, FlutterPl
             if (call.method.equals("play")) {
                 if (call.hasArgument("uri")) {
                     String uri = call.argument("uri");
-                    ringtoneUri = Uri.parse(uri);
+                    ringtoneUri = Uri.parse("file://" + uri);
                 }
 
                 // The androidSound overrides fromAsset if exists
@@ -120,7 +120,6 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler, FlutterPl
                         ringtone.setStreamType(AudioManager.STREAM_ALARM);
                     }
                 }
-
                 ringtone.play();
 
                 result.success(null);
